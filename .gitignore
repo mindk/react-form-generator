@@ -1,0 +1,7 @@
+# Node modules
+node_modules
+build
+
+# Environment variables, never commit this file
+.env
+.idea
