@@ -33,13 +33,17 @@ const profileMenuStyle = theme => ({
     },
     profilePhoto: {
         transition: "all 300ms linear",
-        width: "43px",
-        height: "43px",
+        width: 43,
+        height: 43,
         overflow: "hidden",
-        marginRight: "15px",
+        marginRight: 15,
         borderRadius: "50%",
         border: `1px solid ${primaryColor}`,
         textAlign: 'center',
+
+        [theme.breakpoints.down("xs")]: {
+            marginRight: 0,
+        },
     },
     avatarImg: {
         display: 'inline-block',
@@ -49,9 +53,18 @@ const profileMenuStyle = theme => ({
     },
     profileName: {
         color: primaryColor,
-        fontSize: "22px",
+        fontSize: 22,
         fontWeight: 600,
         textTransform: 'none',
+
+        [theme.breakpoints.down("sm")]: {
+            // fontSize: 20,
+            display: 'none',
+        },
+
+        [theme.breakpoints.down("xs")]: {
+           // display: 'none',
+        },
     },
     pooperNav: {
         width: '250px',

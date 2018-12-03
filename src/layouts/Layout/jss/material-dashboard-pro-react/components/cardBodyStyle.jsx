@@ -11,8 +11,13 @@ const cardBodyStyle = {
     WebkitBoxFlex: "1",
     position: "relative",
     borderBottom: `1px solid ${borderPrimaryColor}`,
+
       "&:last-child, &:first-child:last-child": {
           borderBottom: "none"
+      },
+
+      "@media (max-width: 599px)": {
+          margin: "0 15px",
       },
 
     "&:first-child": {

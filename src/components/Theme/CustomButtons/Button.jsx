@@ -23,8 +23,10 @@ function RegularButton({ ...props }) {
         link,
         justIcon,
         withIcon,
+        withoutBoxShadow,
         textButton,
         returnButton,
+        borderedButton,
         className,
         muiClasses,
         ...rest
@@ -41,8 +43,10 @@ function RegularButton({ ...props }) {
         [classes.link]: link,
         [classes.justIcon]: justIcon,
         [classes.withIcon]: withIcon,
+        [classes.withoutBoxShadow]: withoutBoxShadow,
         [classes.textButton]: textButton,
         [classes.returnButton]: returnButton,
+        [classes.borderedButton]: borderedButton,
         [className]: className
     });
     return (
@@ -84,8 +88,10 @@ RegularButton.propTypes = {
     link: PropTypes.bool,
     justIcon: PropTypes.bool,
     withIcon: PropTypes.bool,
+    withoutBoxShadow: PropTypes.bool,
     textButton: PropTypes.bool,
     returnButton: PropTypes.bool,
+    borderedButton: PropTypes.bool,
     className: PropTypes.string,
     muiClasses: PropTypes.object
 };

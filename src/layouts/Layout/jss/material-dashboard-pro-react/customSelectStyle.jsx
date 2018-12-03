@@ -2,7 +2,10 @@ import {
     primaryColor,
     primaryBoxShadow,
     ladelPrimaryColor,
-    defaultFont, dangerColor, successColor,
+    defaultFont,
+    dangerColor,
+    successColor,
+    blackColor,
 } from 'Layouts/Layout/jss/material-dashboard-pro-react';
 
 const customSelectStyle = {
@@ -13,7 +16,7 @@ const customSelectStyle = {
     fontWeight: "400",
     lineHeight: "1.42857",
     textDecoration: "none",
-    color: "#3C4858",
+    color: blackColor,
     letterSpacing: "0",
     "&:focus": {
       backgroundColor: "transparent"

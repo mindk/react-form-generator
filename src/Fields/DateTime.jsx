@@ -189,8 +189,6 @@ class FGDateTime extends PureComponent {
         const id = `id-${name}`;
         const { intl: { formatMessage } } = this.context;
 
-        console.log(this.timeFormat);
-
         return (
             <div className={cx(classes.dateTimeWrapper, rowClassName)}>
                 <FormControl
@@ -230,4 +228,3 @@ class FGDateTime extends PureComponent {
 }
 
 export default withStyles(DateTimeStyles)(FGDateTime);
-//export default FGDateTime;

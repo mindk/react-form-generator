@@ -21,6 +21,22 @@ const customInputStyle = {
     "&:after": {
       borderColor: primaryColor
     }
+    ,
+    "&.input-textarea": {
+        border: "1px solid #D2D2D2",
+        borderBottom: "none",
+        paddingTop: 0,
+        marginTop: '6px !important',
+
+        "& textarea": {
+            padding: '5px 7px 0',
+            height: 100,
+            resize: 'none',
+            overflow: 'auto',
+        }
+    }
+
+
   },
   underlineError: {
     "&:after": {
@@ -106,7 +122,14 @@ const customInputStyle = {
       color: "#FFFFFF",
       opacity: "1"
     }
-  }
+  },
+    textFieldCounter: {
+        color: ladelPrimaryColor,
+        marginTop: 3,
+        fontSize: 14,
+        lineHeight: 1,
+        textAlign: 'right',
+    }
 };
 
 export default customInputStyle;

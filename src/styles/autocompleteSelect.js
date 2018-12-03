@@ -10,6 +10,7 @@ import {
     successColor,
     blackColor,
     ladelPrimaryColor,
+    primaryBoxShadow,
 } from 'Layouts/Layout/jss/material-dashboard-pro-react';
 
 
@@ -65,17 +66,26 @@ const AutocompleteSelectStyles = theme => ({
         color: ladelPrimaryColor,
     },
     paperItemRoot: {
-        paddingTop: 5,
-        paddingBottom: 5,
-        fontSize: 14,
+        display: 'block',
+        height: 'auto',
+        lineHeight: 1,
+        padding: '12px 10px',
+        margin: '0 5px',
+        fontSize: 13,
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         maxWidth: '100%',
+        borderRadius: 2,
     },
-    paperItemSelected:{
+    paperItemSelected: {
+        "&, &:hover": {
+            backgroundColor: `${primaryColor} !important`,
+            color: '#FFF !important',
+            fontWeight: '400 !important',
+        },
         "&:hover": {
-            backgroundColor: "rgba(0,0,0,.1) !important"
+            ...primaryBoxShadow,
         }
     },
     divider: {

@@ -21,12 +21,14 @@ const headerStyle = {
     marginBottom: "0",
     position: "absolute",
     width: "100%",
-    paddingTop: "10px",
+    // paddingTop: "10px",
     zIndex: "1029",
     color: "#555555",
     border: "0",
-    borderRadius: "3px",
-    padding: "10px 0",
+    // borderRadius: "3px",
+    borderRadius: 0,
+    // padding: "10px 0",
+    padding: "8px 0",
     transition: "all 150ms ease 0s",
     minHeight: "50px",
     display: "block"
@@ -94,6 +96,44 @@ const headerStyle = {
   },
     logoMobileBlock: {},
     logoMobile: {},
+    headerContentBlock: {
+      textAlign: 'center',
+    },
+    createNetworkButtonWrapper: {
+
+      '& .create-network-button': {
+          textTransform: 'none',
+          fontSize: 18,
+          fontWeight: 300,
+          margin: 0,
+          boxShadow: 'none',
+
+          "&:hover, &:hover:focus": {
+              boxShadow: "0px 4px 8px rgba(0, 0, 0, .2)",
+          },
+
+          '& img': {
+              marginRight: 15
+          },
+
+          '@media (max-width: 599px)': {
+              fontSize: 14,
+              paddingLeft: 20,
+              paddingRight: 20,
+
+              '& img': {
+                  marginRight: 7,
+              },
+          }
+      },
+    },
+    linkReset: {
+        "&, &:hover, &:focus": {
+            color: "inherit",
+            textDecoration: "none",
+            outline: "none",
+        }
+    },
 };
 
 export default headerStyle;

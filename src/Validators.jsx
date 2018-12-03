@@ -54,6 +54,7 @@ export function email(value) {
  * @return {*}
  */
 export function number(value) {
+    if (!value) return undefined;
     /^\d+$/
     return /^\d+$/.test(value)
         ? undefined
@@ -68,6 +69,7 @@ export function number(value) {
  * @return {*}
  */
 export function money(value) {
+    if (!value) return undefined;
     return /^[0-9]+(\.[0-9]{1,2})?$/.test(value)
         ? undefined
         : 'validation.error.not_a_money';
@@ -81,6 +83,7 @@ export function money(value) {
  * @return {*}
  */
 export function years(value) {
+    if (!value) return undefined;
     return /^\d+$/.test(value)
         ? undefined
         : 'validation.error.not_a_year';
@@ -94,6 +97,7 @@ export function years(value) {
  * @return {*}
  */
 export function gpa(value) {
+    if (!value) return undefined;
     return /^\d(\.[0-9]{1,2})?$/.test(value)
         ? undefined
         : 'validation.error.not_a_gpa';

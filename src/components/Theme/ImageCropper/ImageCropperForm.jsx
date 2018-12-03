@@ -45,7 +45,7 @@ export default class ImageCropperForm extends PureComponent {
             aspectRatio: 268 / 260,
         },
         canvasOptions: {
-            width: 160,
+            width: 300,
             height: 90,
             minWidth: 256,
             minHeight: 256,

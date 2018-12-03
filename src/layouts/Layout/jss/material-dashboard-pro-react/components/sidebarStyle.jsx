@@ -496,7 +496,7 @@ const sidebarStyle = theme => ({
     }
   },
     sidebarMyNetworkBlock: {
-        padding: '20px 30px',
+        padding: '20px 22px',
         position: 'relative',
         zIndex: '4',
         display: 'flex',
@@ -507,10 +507,20 @@ const sidebarStyle = theme => ({
     sidebarMyNetworkTitle: {
         color: primaryColor,
         fontSize: 24,
-        fontWeight: 600,
+        fontWeight: 500,
         marginLeft: 15,
+        transition: "all 0.2s cubic-bezier(0.4, 0, 1, 1)",
     },
-    sidebarMyNetworkBlockMini: {},
+    sidebarMyNetworkBlockMini: {
+      padding: '20px 30px 15px',
+    },
+    linkReset: {
+        "&, &:hover, &:focus": {
+            color: "inherit",
+            textDecoration: "none",
+            outline: "none",
+        }
+    },
 });
 
 export default sidebarStyle;

@@ -30,7 +30,9 @@ function CustomInput({ ...props }) {
         onChange,
         onBlur,
         fullWidth,
-        defaultValue
+        defaultValue,
+        maxLength,
+        showCounter,
     } = props;
 
     const labelClasses = classNames({
@@ -60,6 +62,14 @@ function CustomInput({ ...props }) {
         [classes.labelRootError]: error,
         [classes.labelRootSuccess]: success && !error
     });
+    let counter = null;
+    if (showCounter) {
+        if (maxLength !== -1) {
+            counter = `${inputProps.value.length}/${maxLength}`;
+        } else {
+            counter = inputProps.value.length
+        }
+    }
 
     return (
 
@@ -89,7 +99,9 @@ function CustomInput({ ...props }) {
                 onBlur={onBlur}
                 defaultValue={defaultValue}
                 {...inputProps}
+                inputProps={{maxLength}}
             />
+            {counter && <div className={classes.textFieldCounter}>{counter}</div>}
             {helpText !== undefined ? (
                 <FormHelperText id={id + '-text'} className={helpTextClasses}>
                     {renderHTML(helpText)}
@@ -115,6 +127,8 @@ CustomInput.propTypes = {
     onBlur: PropTypes.func,
     defaultValue: PropTypes.string,
     fullWidth: PropTypes.bool,
+    maxLength: PropTypes.number,
+    showCounter: PropTypes.bool
 };
 
 export default withStyles(customInputStyle)(CustomInput);

@@ -88,7 +88,20 @@ const buttonStyle = {
       backgroundColor: primaryColor,
       boxShadow:
         "0 14px 26px -12px rgba(0, 0, 0, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
-    }
+    },
+
+    "&$borderedButton": {
+      borderColor: primaryColor,
+      color: primaryColor,
+
+        "&:hover, &:hover:focus": {
+          backgroundColor: primaryColor,
+          color: '#FFF',
+        },
+        "&:focus": {
+            backgroundColor: '#FFF',
+        },
+    },
   },
   info: {
     backgroundColor: infoColor,
@@ -98,7 +111,20 @@ const buttonStyle = {
       backgroundColor: infoColor,
       boxShadow:
         "0 14px 26px -12px rgba(0, 188, 212, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 188, 212, 0.2)"
-    }
+    },
+
+      "&$borderedButton": {
+          borderColor: infoColor,
+          color: infoColor,
+
+          "&:hover, &:hover:focus": {
+              backgroundColor: infoColor,
+              color: '#FFF',
+          },
+          "&:focus": {
+              backgroundColor: '#FFF',
+          },
+      }
   },
   success: {
     backgroundColor: successColor,
@@ -108,7 +134,20 @@ const buttonStyle = {
       backgroundColor: successColor,
       boxShadow:
         "0 14px 26px -12px rgba(76, 175, 80, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(76, 175, 80, 0.2)"
-    }
+    },
+
+      "&$borderedButton": {
+          borderColor: successColor,
+          color: successColor,
+
+          "&:hover, &:hover:focus": {
+              backgroundColor: successColor,
+              color: '#FFF',
+          },
+          "&:focus": {
+              backgroundColor: '#FFF',
+          },
+      }
   },
   warning: {
     backgroundColor: warningColor,
@@ -118,7 +157,20 @@ const buttonStyle = {
       backgroundColor: warningColor,
       boxShadow:
         "0 14px 26px -12px rgba(255, 152, 0, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(255, 152, 0, 0.2)"
-    }
+    },
+
+      "&$borderedButton": {
+          borderColor: warningColor,
+          color: warningColor,
+
+          "&:hover, &:hover:focus": {
+              backgroundColor: warningColor,
+              color: '#FFF',
+          },
+          "&:focus": {
+              backgroundColor: '#FFF',
+          },
+      }
   },
   danger: {
     backgroundColor: dangerColor,
@@ -128,7 +180,20 @@ const buttonStyle = {
       backgroundColor: dangerColor,
       boxShadow:
         "0 14px 26px -12px rgba(244, 67, 54, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(244, 67, 54, 0.2)"
-    }
+    },
+
+      "&$borderedButton": {
+          borderColor: dangerColor,
+          color: dangerColor,
+
+          "&:hover, &:hover:focus": {
+              backgroundColor: dangerColor,
+              color: '#FFF',
+          },
+          "&:focus": {
+              backgroundColor: '#FFF',
+          },
+      }
   },
   rose: {
     backgroundColor: roseColor,
@@ -138,7 +203,20 @@ const buttonStyle = {
       backgroundColor: roseColor,
       boxShadow:
         "0 14px 26px -12px rgba(233, 30, 99, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(233, 30, 99, 0.2)"
-    }
+    },
+
+      "&$borderedButton": {
+          borderColor: roseColor,
+          color: roseColor,
+
+          "&:hover, &:hover:focus": {
+              backgroundColor: roseColor,
+              color: '#FFF',
+          },
+          "&:focus": {
+              backgroundColor: '#FFF',
+          },
+      }
   },
   white: {
     "&,&:focus,&:hover": {
@@ -472,6 +550,11 @@ const buttonStyle = {
             marginTop: '-2px',
         },
     },
+    withoutBoxShadow: {
+        "&, &:hover, &:focus": {
+            boxShadow: 'none',
+        },
+    },
     returnButton: {
         backgroundColor: "#FFFFFF",
         color: '#050505',
@@ -501,6 +584,11 @@ const buttonStyle = {
             marginTop: '-2px',
         },
     },
+    borderedButton: {
+      backgroundColor: '#FFF',
+      borderWidth: '1px',
+      borderStyle: 'solid',
+    }
 };
 
 export default buttonStyle;

@@ -20,7 +20,6 @@ class FGDate extends FGDateTime {
      * @return {*}
      */
     get timeFormat() { // eslint-disable-line
-        console.log('aksdjkalsjdklsad');
         return false;
     }
 

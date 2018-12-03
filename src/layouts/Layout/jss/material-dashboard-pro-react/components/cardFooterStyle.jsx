@@ -7,7 +7,11 @@ const cardFooterStyle = {
     alignItems: "center",
     display: "flex",
     backgroundColor: "transparent",
-    border: "0"
+    border: "0",
+
+    "@media (max-width: 599px)": {
+        margin: "0 15px",
+    },
   },
   cardFooterProfile: {
     marginTop: "-15px"

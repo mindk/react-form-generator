@@ -12,7 +12,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import cx from 'classname';
-import {AutocompleteSelectStyles} from '../styles';
+import { AutocompleteSelectStyles } from '../styles';
 import Select from 'react-select';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -322,7 +322,7 @@ class FGAutocompleteSelect extends PureComponent {
         this.setState({ touched: true });
 
         onBlur();
-    }
+    };
 
     /**
      * handleInputChange

@@ -21,16 +21,16 @@ export default class FGText extends PureComponent {
         input: PropTypes.object,
         label: PropTypes.string,
         meta: PropTypes.object,
-        // className: PropTypes.string,
         rowClassName: PropTypes.string,
         withLabel: PropTypes.bool,
         rows: PropTypes.number,
-        // classes: PropTypes.object,
         type: PropTypes.string,
         placeholder: PropTypes.string,
         fullWidth: PropTypes.bool,
         required: PropTypes.bool,
         readOnly: PropTypes.bool,
+        maxLength: PropTypes.number,
+        showCounter: PropTypes.bool
     };
 
     /**
@@ -47,16 +47,16 @@ export default class FGText extends PureComponent {
         input: {},
         label: '',
         meta: {},
-        // className: '',
         rowClassName: '',
-        // classes: {},
         placeholder: '',
         type: 'text',
         withLabel: false,
         fullWidth: true,
         rows: 3,
         required: false,
-        readOnly: false
+        readOnly: false,
+        maxLength: -1,
+        showCounter: false
     };
 
     /**
@@ -77,6 +77,8 @@ export default class FGText extends PureComponent {
             fullWidth,
             required,
             readOnly,
+            maxLength,
+            showCounter
         } = this.props;
         const { intl: { formatMessage } } = this.context;
         const errorMessage = submitFailed || touched && error
@@ -90,10 +92,13 @@ export default class FGText extends PureComponent {
                 >
                     <CustomInput
                         labelText={labelText}
+                        maxLength={maxLength}
+                        showCounter={showCounter}
                         labelProps={ {
                             disabled: readOnly,
                             disableAnimation: readOnly,
-                            required
+                            required,
+                            shrink:true
                         }}
                         formControlProps={{
                             fullWidth
@@ -102,7 +107,9 @@ export default class FGText extends PureComponent {
                             type,
                             disabled: readOnly,
                             multiline: true,
+                            maxLength,
                             rows,
+                            className: 'input-textarea',
                             placeholder: placeholder ? formatMessage({ id: `field.${placeholder}.placeholder` }) : '',
                             ...input
                         }}

@@ -10,7 +10,9 @@ import {
   infoColor,
   roseColor,
   grayColor,
-  defaultFont
+  defaultFont,
+  tableBorderColor,
+  tableStripedRowBackground,
 } from "Layouts/Layout/jss/material-dashboard-pro-react";
 
 const tableStyle = theme => ({
@@ -45,14 +47,17 @@ const tableStyle = theme => ({
     backgroundColor: "transparent",
     borderSpacing: "0",
     borderCollapse: "collapse",
-    overflow: "auto"
+    overflow: "auto",
+      "& tbody": {
+          borderBottom: `1px solid ${tableBorderColor}`,
+      }
   },
   tableShoppingHead: {
     fontSize: "0.9em !important",
     textTransform: "uppercase !important"
   },
   tableHeadFontSize: {
-    fontSize: "1.25em !important"
+    fontSize: "16px !important"
   },
   tableHeadCell: {
     color: "rgba(0, 0, 0, 0.87)",
@@ -63,9 +68,9 @@ const tableStyle = theme => ({
     lineHeight: "1.42857143",
     padding: "12px 8px!important",
     verticalAlign: "middle",
-    fontSize: "1em",
+    fontSize: "14px",
     borderBottom: "none",
-    borderTop: "1px solid #ddd",
+    borderTop: `1px solid ${tableBorderColor}`,
     position: "relative",
     [theme.breakpoints.down("sm")]: {
       minHeight: "24px",
@@ -90,7 +95,7 @@ const tableStyle = theme => ({
     overflowX: "auto"
   },
   tableStripedRow: {
-    backgroundColor: "#f9f9f9"
+    backgroundColor: tableStripedRowBackground
   },
   tableRowHover: {
     "&:hover": {

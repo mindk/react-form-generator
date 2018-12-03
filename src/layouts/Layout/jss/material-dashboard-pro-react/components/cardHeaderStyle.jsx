@@ -16,15 +16,23 @@ const cardHeaderStyle = {
     borderBottom: "none",
     background: "transparent",
     zIndex: "3 !important",
+
     "&$cardHeaderPlain,&$cardHeaderImage,&$cardHeaderContact,&$cardHeaderSignup,&$cardHeaderIcon,&$cardHeaderStats,&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader": {
       margin: "0 15px",
       padding: "0",
       position: "relative",
-      color: "#FFFFFF"
+      color: "#FFFFFF",
     },
+
+    "@media (max-width: 599px)": {
+        paddingLeft: "15px",
+        paddingRight: "15px",
+    },
+
     "&:first-child": {
       borderRadius: "calc(.25rem - 1px) calc(.25rem - 1px) 0 0"
     },
+
     "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader": {
       "&:not($cardHeaderIcon):not($cardHeaderImage):not($cardHeaderText)": {
         borderRadius: "3px",
@@ -65,6 +73,10 @@ const cardHeaderStyle = {
       padding: "0.75rem 0",
       margin:'0 30px',
       borderBottom: `1px solid ${borderPrimaryColor}`,
+
+      "@media (max-width: 599px)": {
+          margin: "0 15px",
+      },
     },
   },
     cardHeaderExtend: {

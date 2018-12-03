@@ -99,6 +99,8 @@ const blackColor = "#000000";
 const borderPrimaryColor = "#DFE6F3";
 
 const ladelPrimaryColor = "#9DAFBD";
+const tableBorderColor = "#9DAFBD";
+const tableStripedRowBackground = "#EEF2F4";
 
 const primaryBoxShadow = {
   boxShadow:
@@ -164,7 +166,8 @@ const infoCardHeader = {
   ...infoBoxShadow
 };
 const primaryCardHeader = {
-  background: "linear-gradient(60deg, #ab47bc, #8e24aa)",
+  // background: `linear-gradient(60deg, #ab47bc, #8e24aa)`,
+    background: `linear-gradient(60deg, #0285e9, ${primaryColor})`,
   ...primaryBoxShadow
 };
 const roseCardHeader = {
@@ -260,6 +263,10 @@ const cardLink = {
     marginLeft: "1.25rem"
   }
 };
+const sideBarCardIndent = {
+    marginLeft: '18px !important',
+    marginRight: '18px !important',
+};
 
 export {
   //variables
@@ -307,8 +314,11 @@ export {
   cardTitle,
   cardSubtitle,
   cardLink,
+  sideBarCardIndent,
 
   //New custom variables
   borderPrimaryColor,
   ladelPrimaryColor,
+  tableBorderColor,
+  tableStripedRowBackground,
 };

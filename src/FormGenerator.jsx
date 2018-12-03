@@ -10,7 +10,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
+import { Field, reset } from 'redux-form';
 import cx from 'classname';
 import { withStyles } from '@material-ui/core/styles';
 import Button from 'Components/Theme/CustomButtons/Button';
@@ -37,7 +37,6 @@ import FGColor from './Fields/Color';
 import FGColorCircles from './Fields/ColorCircles';
 
 import { FG_EMPTY } from 'Constants';
-import { GridPropsType } from 'Types';
 import {
     required,
     email,
@@ -50,8 +49,12 @@ import {
     money,
     gpa
 } from './Validators';
+import { GridPropsType } from 'Types';
 
 export class FormGenerator extends PureComponent {
+    /**
+     * @type {Object}
+     */
     static propTypes = {
         readonly: PropTypes.bool,
         form: PropTypes.string.isRequired,
@@ -75,32 +78,11 @@ export class FormGenerator extends PureComponent {
         enabledSubmit: PropTypes.func,
     };
 
-    static defaultProps = {
-        readonly: false,
-        submitButtonProps: {
-            title: 'save',
-            className: ''
-        },
-        formOptions: {},
-        fieldsets: [],
-        clearRemovedFields: false,
-    };
-
-    static contextTypes = {
-        intl: PropTypes.object.isRequired,
-    };
-
     /**
-     * Fields
+     * All supported field types
      *
-     * @type {{}}
+     * @type {string[]}
      */
-    fields = {};
-
-    state = {
-        removedFields: []
-    };
-
     static types = [
         'hidden',
         'input',
@@ -119,6 +101,34 @@ export class FormGenerator extends PureComponent {
         'content',
     ];
 
+    /**
+     * Fields
+     *
+     * @type {{}}
+     */
+    fields = {};
+
+    state = {
+        removedFields: []
+    };
+
+    /**
+     * @type {Object}
+     */
+    static defaultProps = {
+        readonly: false,
+        submitButtonProps: {
+            title: 'save',
+            className: ''
+        },
+        formOptions: {},
+        fieldsets: [],
+        clearRemovedFields: false,
+    };
+
+    /**
+     * @type {{required}}
+     */
     static validators = {
         required,
         url,
@@ -133,11 +143,20 @@ export class FormGenerator extends PureComponent {
     };
 
     componentDidUpdate() {
-        const { clearRemovedFields } = this.props;
+        const { clearRemovedFields, valid, enabledSubmit } = this.props;
         if (clearRemovedFields) {
             this.setState({ removedFields: [] });
         }
+
+        enabledSubmit(valid);
     }
+
+    /**
+     * @type {Object}
+     */
+    static contextTypes = {
+        intl: PropTypes.object.isRequired,
+    };
 
     /**
      * Build Validators
@@ -673,7 +692,7 @@ export class FormGenerator extends PureComponent {
      * @param column
      * @return {Array}
      */
-    renderColumn = (column) => {
+    renderColumn = column => {
         const { fieldsets } = this.props;
         const sets = fieldsets.filter(fieldSet => fieldSet.column === column);
         const fieldSetNames = sets.map(fieldSet => fieldSet.title);
@@ -920,7 +939,6 @@ export class FormGenerator extends PureComponent {
         );
     };
 
-
     /**
      * Render
      *
@@ -951,5 +969,4 @@ export class FormGenerator extends PureComponent {
         );
     }
 }
-
 export default withStyles(FormStyles)(FormGenerator);

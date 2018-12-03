@@ -62,7 +62,7 @@ class FormGridGenerator extends FormGenerator {
             }
         }
 
-        if (includeEmpty && this.fields && this.fields[FG_EMPTY]) {
+        if (includeEmpty && this.fields[FG_EMPTY]) {
             result.push(this.renderEmptyFieldSet());
         }
 
@@ -156,6 +156,7 @@ class FormGridGenerator extends FormGenerator {
             if (type === 'content' && field.options.component && typeof field.options.component === 'function') {
                 result.push(
                     <GridItem
+                        key={`grid-item-field-${field.name}`}
                         {...{...grid, ...gridItemOptions}}
                     >
                         <div key={`field-${field.name}`}>
@@ -214,12 +215,10 @@ class FormGridGenerator extends FormGenerator {
                 autoComplete = true,
             },
             submitButtonProps: {
-                sameRowWithFields = true
+                sameRowWithFields = false
             }
         } = this.props;
-
         this.buildFields();
-
         return (
             <form
                 id={form}
