@@ -165,6 +165,7 @@ class FGSelect extends PureComponent {
             required,
             readOnly,
             classes,
+            multiple
         } = this.props;
         const labelText = withLabel && label ? label : '';
         const id = `radio-${name}`;
@@ -197,6 +198,7 @@ class FGSelect extends PureComponent {
                             name,
                             id,
                         }}
+                        multiple={multiple}
                         value={value !== undefined ? value : ''}
                         onChange={onChange}
 

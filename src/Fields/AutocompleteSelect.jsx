@@ -92,6 +92,7 @@ class FGAutocompleteSelect extends PureComponent {
     };
 
     MultiValue = props => {
+        const { readOnly } = this.props;
         return (
             <Chip
                 tabIndex={-1}
@@ -100,7 +101,12 @@ class FGAutocompleteSelect extends PureComponent {
                     [props.selectProps.classes.chipFocused]: props.isFocused,
                 })}
                 onDelete={props.removeProps.onClick}
-                deleteIcon={<CancelIcon {...props.removeProps} />}
+                deleteIcon={<CancelIcon
+                    style={{
+                        display: readOnly ? 'none' : 'inline-block'
+                    }}
+                    {...props.removeProps}
+                />}
             />
         );
     };
@@ -267,7 +273,9 @@ class FGAutocompleteSelect extends PureComponent {
      * @constructor
      */
     SingleValue = props => (
-        <Typography className={cx(props.selectProps.classes.singleValue, 'autocomplete-single-value')} {...props.innerProps}>
+        <Typography
+            className={cx(props.selectProps.classes.singleValue, 'autocomplete-single-value')} {...props.innerProps}
+        >
             {props.children}
         </Typography>
     );
@@ -279,7 +287,13 @@ class FGAutocompleteSelect extends PureComponent {
      * @return {*}
      * @constructor
      */
-    ValueContainer = props => <div className={cx(props.selectProps.classes.valueContainer, 'autocomplete-value-container')}>{props.children}</div>;
+    ValueContainer = props => (
+        <div
+            className={cx(props.selectProps.classes.valueContainer, 'autocomplete-value-container')}
+        >
+            {props.children}
+        </div>
+    );
 //***********************************************************************************************************************
 
     getComponents = () => ({
@@ -301,19 +315,28 @@ class FGAutocompleteSelect extends PureComponent {
      */
     handleChange = (value, options) => {
         const { action } = options;
-        const { input: { onChange } } = this.props;
+        const { input: { onChange }, isMulti } = this.props;
         switch (action) {
             case 'select-option':
-                onChange(value.value);
+                if (!isMulti) {
+                    onChange(value.value);
+                } else {
+                    onChange(value.map(val => val.value))
+                }
                 break;
 
-            case 'clear':
             case 'pop-value':
+            case 'clear':
                 onChange(null);
                 break;
-            //
-            // default:
-            //     console.log(action);
+
+            case 'remove-value':
+                if (!isMulti) {
+                    onChange(null);
+                } else {
+                    onChange(value.map(val => val.value))
+                }
+                break;
         }
     };
 
@@ -390,8 +413,11 @@ class FGAutocompleteSelect extends PureComponent {
             isClearable,
             reduxInputChangeFeedback,
         } = this.props;
-        const val = options.find(option => option.value === value);
-        let inputValue = (!reduxInputChangeFeedback || val) ? undefined : value;
+        const val = !isMulti
+            ? options.find(option => option.value === value)
+            : options.filter(option => value.includes(option.value));
+
+        const inputValue = !reduxInputChangeFeedback || val || isMulti ? undefined : value;
 
         return (
             <div className={cx(rowClassName, classes.root)}>
@@ -399,7 +425,7 @@ class FGAutocompleteSelect extends PureComponent {
                     components={this.getComponents()}
                     classes={classes}
                     onChange={this.handleChange}
-                    value={val}
+                    value={val || null}
                     inputValue={inputValue}
                     options={options}
                     isMulti={isMulti}

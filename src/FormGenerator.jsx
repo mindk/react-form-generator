@@ -231,7 +231,7 @@ export class FormGenerator extends PureComponent {
             const {
                 title,
                 readonly,
-                options: { maxLength, type, autoComplete },
+                options: { maxLength, type, autoComplete, idPrefix },
                 isRequired,
                 name,
             } = options;
@@ -247,6 +247,7 @@ export class FormGenerator extends PureComponent {
                     type={type}
                     autoComplete={!!autoComplete}
                     input={input}
+                    idPrefix={idPrefix}
                 />
             );
         },

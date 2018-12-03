@@ -18,6 +18,7 @@ export default class FGInput extends PureComponent {
      */
     static propTypes = {
         name: PropTypes.string,
+        idPrefix: PropTypes.string,
         readOnly: PropTypes.bool,
         input: PropTypes.any,
         label: PropTypes.string,
@@ -53,6 +54,7 @@ export default class FGInput extends PureComponent {
         fullWidth: true,
         readOnly: false,
         autoComplete: true,
+        idPrefix: ''
     };
 
     render() {
@@ -70,6 +72,7 @@ export default class FGInput extends PureComponent {
             required,
             autoComplete,
             name,
+            idPrefix
         } = this.props;
         const { formatMessage } = this.context.intl;
         let errorMessage = (submitFailed || touched && error)
@@ -80,7 +83,7 @@ export default class FGInput extends PureComponent {
             <div className={ rowClassName }>
                 <CustomInput
                     labelText={labelText}
-                    id={`id-${name}`}
+                    id={`id-${idPrefix}-${name}`}
                     labelProps={ {
                         disabled: readOnly,
                         disableAnimation: readOnly,
@@ -104,30 +107,3 @@ export default class FGInput extends PureComponent {
         );
     }
 }
-
-/*
- <FormControl
- fullWidth={fullWidth}
- >
-
- <TextField
- label={labelText}
- type={type}
- required={required}
- placeholder={placeholder ? formatMessage({ id: `field.${placeholder}.placeholder` }) : ''}
- FormHelperTextProps={{
- className: 'errors-list',
- error: !!touched && !!error
- }}
- InputProps={{
- readOnly: readOnly,
- }}
- helperText={errorMessage}
- error={!!touched && !!error}
- inputProps={{
- maxLength: maxLength,
- ...input
- }}
- />
- </FormControl>
- */
